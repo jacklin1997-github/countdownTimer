@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    
+<style>
+    body{
+                background-image: url('wladislaw-sokolowskij-0vw4InAC-yM-unsplash (1).jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+        }
+    main{
+        margin-top: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
+        display: flex;
+        flex-direction: row;
+        vertical-align: baseline;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    main > div{
+        flex: none;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bolder;
+        font-size: 75px;
+        text-align: center;
+        margin: 20px;
+    }
+</style>
+</head>
+<body>
+    <main>
+        <div>YEAR<div id="year"></div></div>
+        <div>DAYS<div id="days"></div></div>
+        <div>HOURS<div id="hours"></div></div>
+        <div>MIN<div id="minutes"></div></div>
+        <div>SEC<div id="seconds"></div></div>
+    </main>
+
+   <script>
+        setInterval(()=>{
+            const today = new Date();
+            const finishDate = new Date("Sep 26, 2030 00:00:00").getTime();
+            const now = new Date().getTime();
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
+        // 把字串放進Date() 用 getTime()可以轉換成unix time
+            const daysLeft = finishDate - now;
+            document.getElementById("year").innerHTML = Math.floor(daysLeft/day/365)
+            document.getElementById("days").innerHTML = Math.floor(daysLeft/day%365)
+            document.getElementById("hours").innerHTML = Math.floor(daysLeft%day/hour)
+            document.getElementById("minutes").innerHTML = Math.floor(daysLeft%hour/minute)
+            document.getElementById("seconds").innerHTML = Math.floor(daysLeft%minute/second)
+        },1000)
+    </script>
+</body>
